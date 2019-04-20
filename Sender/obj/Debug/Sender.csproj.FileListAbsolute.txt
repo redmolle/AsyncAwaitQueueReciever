@@ -1,0 +1,6 @@
+C:\Users\redmo\Documents\Study\Uni\8\Волович\Распределенные системы_Лекции\MSMQ\SimpleMessaging\Sender\bin\Debug\Sender.exe
+C:\Users\redmo\Documents\Study\Uni\8\Волович\Распределенные системы_Лекции\MSMQ\SimpleMessaging\Sender\bin\Debug\Sender.pdb
+C:\Users\redmo\Documents\Study\Uni\8\Волович\Распределенные системы_Лекции\MSMQ\SimpleMessaging\Sender\obj\Debug\Sender.csprojAssemblyReference.cache
+C:\Users\redmo\Documents\Study\Uni\8\Волович\Распределенные системы_Лекции\MSMQ\SimpleMessaging\Sender\obj\Debug\Sender.csproj.CoreCompileInputs.cache
+C:\Users\redmo\Documents\Study\Uni\8\Волович\Распределенные системы_Лекции\MSMQ\SimpleMessaging\Sender\obj\Debug\Sender.exe
+C:\Users\redmo\Documents\Study\Uni\8\Волович\Распределенные системы_Лекции\MSMQ\SimpleMessaging\Sender\obj\Debug\Sender.pdb
