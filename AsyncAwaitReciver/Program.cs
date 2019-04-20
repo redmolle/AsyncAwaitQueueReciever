@@ -8,11 +8,48 @@ namespace AsyncAwaitReciver
     {
         static void Main(string[] args)
         {
-            Process();
-            while(true)
+            Task t = Process();
+            while (true)
             {
                 Print("Some working...");
                 System.Threading.Thread.Sleep(1000);
+            }
+        }
+
+        static async Task OnMessageArrival(IAsyncResult ar)
+        {
+            MessageQueue mq = (MessageQueue)ar;
+            try
+            {
+                Message msg = mq.EndReceive(ar);
+                Console.WriteLine(msg.Body.ToString());
+            }
+            catch
+            {
+                Console.WriteLine("TimeOut!");
+            }
+            finally
+            {
+                mq.BeginReceive(TimeSpan.FromSeconds(5), mq);
+                await OnMessageArrival(ar);
+            }
+        }
+
+        static void OnReceiveCompleted(object sender, ReceiveCompletedEventArgs e)
+        {
+            MessageQueue mq = (MessageQueue)sender;
+            try
+            {
+                Message msg = mq.EndReceive(e.AsyncResult);
+                Console.WriteLine(msg.Body.ToString());
+            }
+            catch (MessageQueueException mqError)
+            {
+                Console.WriteLine(mqError.Message);
+            }
+            finally
+            {
+                mq.BeginReceive(TimeSpan.FromSeconds(5));
             }
         }
 
@@ -24,18 +61,8 @@ namespace AsyncAwaitReciver
                     "System.String",
                     "System.Single"
                 });
-            try
-            {
-                Message msg = await Task.Factory.FromAsync<Message>(
-                  mq.BeginReceive(),
-                  mq.EndReceive);
-                Print(msg.Body.ToString());
-            }
-            catch
-            {
-                Print("Timeout!");
-            }
-            await Process();
+            IAsyncResult ar = mq.BeginReceive(TimeSpan.FromSeconds(5), mq);
+            await OnMessageArrival(ar);
         }
 
         static void Print(string msg)
