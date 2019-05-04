@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwaitReciver", "AsyncAwaitReciver\AsyncAwaitReciver.csproj", "{CD38A696-D5BD-42DE-971C-DFC32DAAF8C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncReciver", "AsyncAwaitReciver\AsyncReciver.csproj", "{CD38A696-D5BD-42DE-971C-DFC32DAAF8C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncSender", "AsyncSender\AsyncSender.csproj", "{B147EA68-4D74-4F5C-9F41-50F179101248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpLayer", "Graph\HelpLayer.csproj", "{1D7C57C0-2B95-45B0-A9B5-6F861A9D08D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CD38A696-D5BD-42DE-971C-DFC32DAAF8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD38A696-D5BD-42DE-971C-DFC32DAAF8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD38A696-D5BD-42DE-971C-DFC32DAAF8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B147EA68-4D74-4F5C-9F41-50F179101248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B147EA68-4D74-4F5C-9F41-50F179101248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B147EA68-4D74-4F5C-9F41-50F179101248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B147EA68-4D74-4F5C-9F41-50F179101248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D7C57C0-2B95-45B0-A9B5-6F861A9D08D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D7C57C0-2B95-45B0-A9B5-6F861A9D08D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D7C57C0-2B95-45B0-A9B5-6F861A9D08D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D7C57C0-2B95-45B0-A9B5-6F861A9D08D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

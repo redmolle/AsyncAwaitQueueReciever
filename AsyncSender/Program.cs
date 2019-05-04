@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using System.Messaging;
 using Newtonsoft.Json;
 
-namespace AsyncReciver
+namespace AsyncSender
 {
     class Program
     {
-        static string name = "Reciever";
+        static string name = "Sender";
         static MessageQueue SenderQ = new MessageQueue(@".\private$\MyPrivateSenderQ");
         static MessageQueue RecieverQ = new MessageQueue(@".\private$\MyPrivateRecieverQ");
 
@@ -15,45 +15,45 @@ namespace AsyncReciver
         {
             while (true)
             {
-                Message msg = Recieve(SenderQ).Result;
-
-                var _A = (HelpLayer.LoopedGraph.Model.A)msg.Body;
-
-                HelpLayer.Messaging.Handler.Send(
-                HelpLayer.LoopedGraph.Handler.SwopC(_A), RecieverQ);
-
+                string cmd = Console.ReadLine();
+                switch (cmd)
+                {
+                    case "q":
+                        return;
+                    case "s":
+                        Send(HelpLayer.LoopedGraph.Handler.InitA("AAA"), SenderQ);
+                        break;
+                }
 
             }
         }
 
-        public static async Task Send(object o, MessageQueue mq)
+        public static void Send(object o, MessageQueue mq)
         {
             try
             {
                 HelpLayer.Messaging.Handler.Send(o, mq);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 Console.WriteLine($"({name})Exception when sending!\n    {ex.Message}");
             }
 
-            await Recieve(RecieverQ);
+            Recieve(RecieverQ);
         }
 
-        public static async Task<Message> Recieve(MessageQueue mq)
+        public static async Task Recieve(MessageQueue mq)
         {
-            Message res = null;
             try
             {
-                res = 
-                    await HelpLayer.Messaging.Handler.Recieve(mq);
+                Message msg = await HelpLayer.Messaging.Handler.Recieve(mq);
+                
+                Console.WriteLine(HelpLayer.LoopedGraph.Handler.Serialize(msg.Body));
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 Console.WriteLine($"({name})Exception when recieving!\n    {ex.Message}");
             }
-            Console.WriteLine(HelpLayer.LoopedGraph.Handler.Serialize(res.Body));
-            return res;
         }
     }
 }
